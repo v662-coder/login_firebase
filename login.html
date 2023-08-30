@@ -1,0 +1,345 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <style>
+
+/* sign in FORM */
+#logreg-forms{
+    width:412px;
+    margin:10vh auto;
+    background-color:#f3f3f3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+#logreg-forms form {
+    width: 100%;
+    max-width: 410px;
+    padding: 15px;
+    margin: auto;
+}
+#logreg-forms .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px; 
+    font-size: 16px;
+}
+#logreg-forms .form-control:focus { z-index: 2; }
+#logreg-forms .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#logreg-forms .form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#logreg-forms .social-login{
+    width:390px;
+    margin:0 auto;
+    margin-bottom: 14px;
+}
+#logreg-forms .social-btn{
+    font-weight: 100;
+    color:white;
+    width:190px;
+    font-size: 0.9rem;
+    text-align: center;
+    align-items: center;
+}
+
+#logreg-forms a{
+    display: block;
+    padding-top:10px;
+    color:lightseagreen;
+}
+
+#logreg-form .lines{
+    width:200px;
+    border:1px solid red;
+}
+
+
+#logreg-forms button[type="submit"]{ margin-top:10px; }
+
+#logreg-forms .facebook-btn{  background-color:#3C589C; }
+
+#logreg-forms .google-btn{ background-color: #DF4B3B; }
+
+#logreg-forms .github-btn{ background-color: #3ba3df; text-align: center;align-items: center; margin-top: 8px;}
+
+#logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
+
+#logreg-forms .form-signup .social-btn{ width:210px; }
+
+#logreg-forms .form-signup input { margin-bottom: 2px;}
+
+.form-signup .social-login{
+    width:210px !important;
+    margin: 0 auto;
+}
+
+/* Mobile */
+
+@media screen and (max-width:500px){
+    #logreg-forms{
+        width:300px;
+    }
+    
+    #logreg-forms  .social-login{
+        width:200px;
+        margin:0 auto;
+        margin-bottom: 10px;
+        align-items: center;
+    }
+    #logreg-forms  .social-btn{
+        font-size: 1.3rem;
+        font-weight: 100;
+        color:white;
+        width:200px;
+        height: 56px;
+        align-items: center;
+        
+    }
+    #logreg-forms .social-btn:nth-child(1){
+        margin-bottom: 5px;
+        
+    }
+    #logreg-forms .social-btn span{
+        display: none;
+    }
+    #logreg-forms  .facebook-btn:after{
+        content:'Facebook';
+    }
+  
+    #logreg-forms  .google-btn:after{
+        content:'Google+';
+    }
+    #logreg-forms  .github-btn:after{
+        content:'Github';
+        
+       
+        margin-left: 20%;
+        padding-top: 20%;
+    }
+    
+}
+    </style>
+    <title>Bootstrap 4 Login/Register Form</title>
+</head>
+<body>
+    <div id="logreg-forms">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login Form</h1>
+            <div class="social-login">
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g" id="googi"></i> Sign in with Google+</span> </button>
+                <button  class="btn github-btn social-btn" type="button"><span><i class="fab fa-github-plus-g"></i> Sign in with Github</span> </button>
+            </div>
+            <p style="text-align:center"> OR  </p>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            
+            <button class="btn btn-success btn-block" type="submit" id="signin" ><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <p style="text-align:center"> OR  </p>
+           
+            <input type="text" id="inputPhone" class="form-control" placeholder="PHONE">
+            <div id="recaptcha-container"></div>
+            <button class="btn btn-success btn-block" type="button" id="phoneloginbtn"><i class="fas fa-sign-in-alt"></i> SEND OTP</button>
+            <input type="otp" id="inputOtp" class="form-control" placeholder="OTP" >
+            <button class="btn btn-success btn-block" type="button" id="verifyotp"><i class="fas fa-sign-in-alt"></i> VERIFY OTP</button>
+            
+            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in with phone and OTP</button>
+            <!-- <a href="#" id="forgot_pswd">Forgot password?</a> -->
+            <hr>
+            <!-- <p>Don't have an account!</p>  -->
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
+            </form>
+
+            <form action="/reset/password/" class="form-reset">
+                <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+            </form>
+            
+            <form action="#" class="form-signup">
+                <div class="social-login">
+                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
+                </div>
+                <div class="social-login">
+                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g" id="googi"></i> Sign in with Google+</span> </button>
+                </div>
+                <div class="social-login">
+                    <button class="btn github-btn social-btn" type="button"><span><i class="fab fa-github-plus-g" ></i> Sign in with Github</span> </button>
+                </div>
+                
+                <p style="text-align:center">OR</p>
+
+                <!-- <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus=""> -->
+                <input type="email" id="useremail" class="form-control" placeholder="Email address" required autofocus="">
+                <input type="password" id="userpass" class="form-control" placeholder="Password" required autofocus="">
+                <!-- <input type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus=""> -->
+
+                <button class="btn btn-primary btn-block" type="button" id="signupbtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+            </form>
+            <br>
+            
+    </div>
+   <script>
+
+ function  toggleResetPswd(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle() // display:block or none
+    $('#logreg-forms .form-reset').toggle() // display:block or none
+}
+
+function toggleSignUp(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle(); // display:block or none
+    $('#logreg-forms .form-signup').toggle(); // display:block or none
+}
+
+$(()=>{
+    // Login Register Form
+    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+    $('#logreg-forms #btn-signup').click(toggleSignUp);
+    $('#logreg-forms #cancel_signup').click(toggleSignUp);
+});
+</script>
+    </p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword ,onAuthStateChanged,GoogleAuthProvider,signInWithRedirect ,getRedirectResult} 
+        from "https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js";
+        
+        //import {getDatabase} from "https://www.gstatic.com/firebasejs/10.3.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyA4WJ319-v9A62TFiZ9ZjaHYceuN9rsE0k",
+          authDomain: "fir-loginpage-6f261.firebaseapp.com",
+          projectId: "fir-loginpage-6f261",
+          storageBucket: "fir-loginpage-6f261.appspot.com",
+          messagingSenderId: "173417834560",
+          appId: "1:173417834560:web:615670b0faae71f21f57a5",
+          measurementId: "G-NH84610FJQ"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        
+        const provider = new GoogleAuthProvider(app);
+
+        signupbtn.addEventListener('click',(e)=>{
+            var email=document.getElementById('useremail').value;
+            var password=document.getElementById('userpass').value;
+            var singnup=document.getElementById('signupbtn').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+             // Signed in 
+               const user = userCredential.user;
+               alert('user created !');
+            // ...
+                 })
+                .catch((error) => {
+                 const errorCode = error.code;
+                   const errorMessage = error.message;
+                   alert(errorMessage);
+                    // ..
+                          });
+        });
+        signin.addEventListener('click',(e)=>{
+            var email=document.getElementById('inputEmail').value;
+            var password=document.getElementById('inputPassword').value;
+            var singin=document.getElementById('signin').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              alert('user Logedin !');
+              // ...
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert(errorMessage);
+            });
+          
+        });
+        const user = auth.currentUser;
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/auth.user
+            const uid = user.uid;
+            // ...
+          } else {
+            // User is signed out
+            // ...
+          }
+        });
+        logout.addEventListener('click',(e)=>{
+            signOut(auth).then(() => {
+                alert('user loged out');
+                // Sign-out successful.
+              }).catch((error) => {
+                // An error happened.
+             
+                    const errorCode = error.code;
+                      const errorMessage = error.message;
+                      alert(errorMessage);
+                       // ..
+                            
+              });
+        });
+
+        gogi.addEventListener('click',(e)=>{
+            signInWithRedirect(auth, provider);
+            getRedirectResult(auth)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access Google APIs.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+        });
+      </script>
+</body>
+</html>
